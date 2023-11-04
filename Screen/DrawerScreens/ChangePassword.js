@@ -50,6 +50,17 @@ function ChangePasswordScreen({ navigation }) {
       console.log(newPassword);
       if (response.data.status == true) {
         console.log("edited Sucessfully");
+        setUserData({ ...userData, password: newPassword });
+        setTimeout(() => {
+          Alert.alert(
+            "",
+            "Changed sucessfully",
+            [{ text: "OK", onPress: () => {} }],
+            {
+              cancelable: true,
+            }
+          );
+        }, 2000);
       } else {
         setErrorText(response.data.msg);
         console.log(response.data.status);
